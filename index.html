@@ -179,9 +179,12 @@
             gap: 10px;
             padding: 14px 22px;
             border-radius: 999px;
+            font: inherit;
+            font-size: 1rem;
             font-weight: 600;
             transition: 0.2s ease;
             white-space: nowrap;
+            cursor: pointer;
         }
 
         .btn-icon {
@@ -196,9 +199,14 @@
             display: none;
         }
 
+        .mobile-only {
+            display: none;
+        }
+
         .btn-primary {
             background: var(--primary);
             color: #243432;
+            border: 1px solid transparent;
         }
 
             .btn-primary:hover {
@@ -206,12 +214,13 @@
             }
 
         .btn-secondary {
-            background: #fff;
-            border: 1px solid rgba(0,0,0,0.08);
+            background: var(--primary);
+            color: #243432;
+            border: 1px solid transparent;
         }
 
             .btn-secondary:hover {
-                background: #f8f8f8;
+                background: var(--primary-dark);
             }
 
         .hero-image-wrap {
@@ -542,6 +551,14 @@
                 display: inline;
             }
 
+            .desktop-only {
+                display: none;
+            }
+
+            .mobile-only {
+                display: inline-flex;
+            }
+
             .hero-logo {
                 transform: translateX(36px);
             }
@@ -623,12 +640,22 @@
                 <div class="hero-content">
                     <img class="hero-logo" src="logo_transparent.png" alt="Logo der Praxis" />
                     <div class="hero-buttons">
-                        <a class="btn btn-primary" href="#kontakt">
-                            <span class="btn-icon" aria-hidden="true">&#128197;</span>
-                            <span class="btn-label-full">Termin anfragen</span>
-                            <span class="btn-label-short">Termin</span>
+                        <a class="btn btn-primary desktop-only" href="#kontakt">
+                            <span class="btn-icon" aria-hidden="true">&#9993;</span>
+                            <span class="btn-label-full">Zum Kontakt</span>
+                            <span class="btn-label-short">Kontakt</span>
                         </a>
-                        <a class="btn btn-secondary" href="tel:+4994616198355">
+                        <a class="btn btn-primary mobile-only" href="mailto:info@engi-physio.de">
+                            <span class="btn-icon" aria-hidden="true">&#9993;</span>
+                            <span class="btn-label-full">E-Mail schreiben</span>
+                            <span class="btn-label-short">E-Mail</span>
+                        </a>
+                        <button class="btn btn-secondary desktop-only" type="button" data-copy-phone="09461 6198355">
+                            <span class="btn-icon" aria-hidden="true">&#128222;</span>
+                            <span class="btn-label-full">Nummer kopieren</span>
+                            <span class="btn-label-short">Telefon</span>
+                        </button>
+                        <a class="btn btn-secondary mobile-only" href="tel:+4994616198355">
                             <span class="btn-icon" aria-hidden="true">&#128222;</span>
                             <span class="btn-label-full">Jetzt anrufen</span>
                             <span class="btn-label-short">Anrufen</span>
@@ -848,6 +875,7 @@
                         <p><strong>Engl Physiotherapie</strong></p>
                         <p>Lindenstra&szlig;e 18<br />93426 Roding</p>
                         <p>Telefon: 09461 6198355</p>
+                        <p>E-Mail: info@engi-physio.de</p>
                         <p>Fax: 09461 / 61 98 356</p>
                     </div>
 
@@ -872,5 +900,41 @@
         </div>
     </footer>
 
+    <script>
+        document.querySelectorAll("[data-copy-phone]").forEach(function (button) {
+            var fullLabel = button.querySelector(".btn-label-full");
+            var shortLabel = button.querySelector(".btn-label-short");
+            var defaultFull = fullLabel ? fullLabel.textContent : "";
+            var defaultShort = shortLabel ? shortLabel.textContent : "";
+
+            button.addEventListener("click", async function () {
+                var phone = button.getAttribute("data-copy-phone");
+
+                try {
+                    await navigator.clipboard.writeText(phone);
+
+                    if (fullLabel) {
+                        fullLabel.textContent = "Nummer kopiert";
+                    }
+
+                    if (shortLabel) {
+                        shortLabel.textContent = "Kopiert";
+                    }
+
+                    setTimeout(function () {
+                        if (fullLabel) {
+                            fullLabel.textContent = defaultFull;
+                        }
+
+                        if (shortLabel) {
+                            shortLabel.textContent = defaultShort;
+                        }
+                    }, 1800);
+                } catch (error) {
+                    window.prompt("Telefonnummer kopieren:", phone);
+                }
+            });
+        });
+    </script>
 </body>
 </html>
