@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Physiotherapiepraxis – Onepager</title>
+    <style>
+        :root {
+            --bg: #fcfaf8;
+            --text: #3f3a36;
+            --muted: #726b66;
+            --primary: #b7d7d2;
+            --primary-dark: #8cb9b2;
+            --accent: #f3d8d8;
+            --soft-beige: #f5efe9;
+            --soft-gray: #F3F4EF;
+            --card: #ffffff;
+            --shadow: 0 10px 30px rgba(0,0,0,0.08);
+            --radius: 22px;
+            --max: 1180px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .container {
+            width: min(92%, var(--max));
+            margin: 0 auto;
+        }
+
+        /* Header */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            background: rgba(252, 250, 248, 0.92);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .header-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px 0;
+            gap: 20px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+            .logo img {
+                height: 56px;
+                width: auto;
+                object-fit: contain;
+            }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+            .logo-text strong {
+                font-size: 1.1rem;
+                letter-spacing: 0.02em;
+            }
+
+            .logo-text span {
+                font-size: 0.92rem;
+                color: var(--muted);
+            }
+
+        nav {
+            display: flex;
+            gap: 24px;
+            flex-wrap: wrap;
+            font-size: 0.96rem;
+            color: var(--muted);
+        }
+
+            nav a:hover {
+                color: var(--text);
+            }
+
+        /* Hero */
+        .hero {
+            padding: 70px 0 50px;
+            background: #FBF6F0;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.15fr 0.85fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        /* center the logo section horizontally */
+        #logo .hero-grid {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* ensure the hero content is stacked and centered */
+        .hero-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+            width: 100%;
+            text-align: center;
+            overflow: hidden;
+        }
+
+            .hero-content img {
+                display: block;
+                width: min(100%, 920px);
+                height: auto;
+                margin: 0 auto;
+            }
+
+        .hero-logo {
+            max-width: min(100%, 920px);
+            transform: translateX(120px);
+        }
+
+            .hero-content h1 {
+                font-size: clamp(2rem, 4vw, 3.4rem);
+                line-height: 1.12;
+                margin-bottom: 20px;
+            }
+
+            .hero-content p {
+                font-size: 1.05rem;
+                color: var(--muted);
+                max-width: 58ch;
+                margin-bottom: 28px;
+            }
+
+        .hero-buttons {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+            margin-top: 18px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 14px 22px;
+            border-radius: 999px;
+            font-weight: 600;
+            transition: 0.2s ease;
+            white-space: nowrap;
+        }
+
+        .btn-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            line-height: 1;
+        }
+
+        .btn-label-short {
+            display: none;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: #243432;
+        }
+
+            .btn-primary:hover {
+                background: var(--primary-dark);
+            }
+
+        .btn-secondary {
+            background: #fff;
+            border: 1px solid rgba(0,0,0,0.08);
+        }
+
+            .btn-secondary:hover {
+                background: #f8f8f8;
+            }
+
+        .hero-image-wrap {
+            position: relative;
+        }
+
+        .hero-image {
+            background: var(--soft-beige);
+            border-radius: 32px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            min-height: 420px;
+        }
+
+            .hero-image img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+
+        /* Sections */
+        section {
+            padding: 70px 0;
+        }
+
+        .section-head {
+            text-align: center;
+            margin-bottom: 36px;
+        }
+
+            .section-head h2 {
+                font-size: clamp(1.8rem, 3vw, 2.6rem);
+                margin-bottom: 10px;
+            }
+
+            .section-head p {
+                color: var(--muted);
+                max-width: 70ch;
+                margin: 0 auto;
+            }
+
+        /* Leistungen */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 22px;
+        }
+
+        .service-card {
+            background: var(--card);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            padding: 28px 22px;
+            text-align: center;
+            border: 1px solid rgba(0,0,0,0.04);
+        }
+
+        .service-icon {
+            width: 200px;
+            height: 200px;
+            margin: 0 auto 0px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--soft-beige);
+            border-radius: 50%;
+            padding: 2px;
+        }
+
+        .service-card h3 {
+            font-size: 1.08rem;
+            margin-bottom: 10px;
+        }
+
+        .service-card p {
+            color: var(--muted);
+            font-size: 0.96rem;
+        }
+
+        /* Über uns */
+        .about {
+            background: var(--soft-gray);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 0.95fr 1.05fr;
+            gap: 38px;
+            align-items: center;
+        }
+
+        .about-images {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 18px;
+        }
+
+            .about-images img {
+                aspect-ratio: 1 / 1;
+                object-fit: cover;
+                border-radius: 50%;
+                box-shadow: var(--shadow);
+                border: 6px solid #fff;
+            }
+
+        .about-text-card {
+            background: rgba(255,255,255,0.7);
+            border-radius: 28px;
+            padding: 34px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.05);
+        }
+
+            .about-text-card h2 {
+                margin-bottom: 16px;
+                font-size: clamp(1.8rem, 3vw, 2.4rem);
+            }
+
+            .about-text-card p {
+                color: var(--text);
+                margin-bottom: 14px;
+            }
+
+                .about-text-card p:last-child {
+                    margin-bottom: 0;
+                }
+
+        /* Zusatzinfos / Unterpunkte */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 4px;
+        }
+
+        /* center each team item vertically and horizontally inside its grid cell */
+        #teams > div {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            text-align: center;
+            padding: 12px;
+        }
+
+        .info-card {
+            background: #fff;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            padding: 26px 24px;
+        }
+
+            .info-card h3 {
+                margin-bottom: 12px;
+                font-size: 1.08rem;
+            }
+
+            .info-card ul {
+                padding-left: 18px;
+                color: var(--muted);
+            }
+
+        .info-card li + li {
+            margin-top: 8px;
+        }
+
+        /* Standort */
+        .location-section {
+            background: var(--soft-gray);
+        }
+
+        .location-box {
+            display: grid;
+            grid-template-columns: 0.9fr 1.1fr;
+            gap: 30px;
+            align-items: stretch;
+        }
+
+        .location-copy,
+        .map-embed {
+            background: #fff;
+            border-radius: 30px;
+            box-shadow: var(--shadow);
+            overflow: hidden;
+        }
+
+        .location-copy {
+            padding: 34px;
+        }
+
+        .location-copy h3 {
+            margin-bottom: 14px;
+            font-size: 1.2rem;
+        }
+
+        .location-copy p {
+            color: var(--muted);
+            margin-bottom: 12px;
+        }
+
+        .location-copy p:last-of-type {
+            margin-bottom: 22px;
+        }
+
+        .map-embed iframe {
+            display: block;
+            width: 100%;
+            min-height: 420px;
+            border: 0;
+        }
+
+
+        /* Kontakt */
+        .contact-box {
+            background: linear-gradient(135deg, #ffffff 0%, #f7f2ee 100%);
+            border-radius: 30px;
+            padding: 34px;
+            box-shadow: var(--shadow);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .contact-details h3,
+        .contact-times h3 {
+            margin-bottom: 14px;
+            font-size: 1.2rem;
+        }
+
+        .contact-details p,
+        .contact-times p {
+            color: var(--muted);
+            margin-bottom: 10px;
+        }
+
+        .contact-details strong {
+            color: var(--text);
+        }
+
+        footer {
+            padding: 28px 0 40px;
+            color: var(--muted);
+            font-size: 0.92rem;
+            text-align: center;
+        }
+
+        /* Responsive */
+        @media (max-width: 1050px) {
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .info-grid {
+                grid-template-columns: 2fr;
+            }
+        }
+
+        @media (max-width: 860px) {
+            .hero-grid,
+            .about-grid,
+            .location-box,
+            .contact-box {
+                grid-template-columns: 1fr;
+            }
+
+            .header-inner {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .logo img {
+                height: 48px;
+            }
+
+            .logo-text strong {
+                font-size: 1rem;
+            }
+
+            .logo-text span {
+                font-size: 0.88rem;
+            }
+
+            nav {
+                width: 100%;
+                justify-content: flex-start;
+                gap: 12px 18px;
+                font-size: 0.92rem;
+            }
+
+            .hero {
+                padding-top: 40px;
+            }
+
+            .hero-image {
+                min-height: 300px;
+            }
+
+            .hero-logo {
+                transform: translateX(72px);
+            }
+
+        }
+
+        @media (max-width: 600px) {
+            .services-grid,
+            .about-images {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-buttons {
+                width: min(100%, 340px);
+                flex-wrap: nowrap;
+                justify-content: center;
+                gap: 10px;
+            }
+
+            .hero-buttons .btn {
+                flex: 1 1 0;
+                min-width: 0;
+                padding: 12px 10px;
+                font-size: 0.88rem;
+                gap: 7px;
+            }
+
+            .btn-label-full {
+                display: none;
+            }
+
+            .btn-label-short {
+                display: inline;
+            }
+
+            .hero-logo {
+                transform: translateX(36px);
+            }
+
+            .logo {
+                gap: 10px;
+            }
+
+            .logo img {
+                height: 40px;
+            }
+
+            .logo-text strong {
+                font-size: 0.94rem;
+            }
+
+            .logo-text span {
+                font-size: 0.82rem;
+            }
+
+            .about-images img {
+                max-width: 280px;
+                margin: 0 auto;
+            }
+
+            .about-text-card,
+            .contact-box,
+            .service-card,
+            .info-card {
+                padding: 22px;
+            }
+        }
+
+        .rund {
+            border-radius: 200px;
+            -moz-border-radius: 200px;
+            -webkit-border-radius: 200px;
+            width: 200px;
+            height: 200px;
+            border: 3px solid white;
+            -ms-align-content: inherit;
+            -webkit-align-content: inherit;
+            align-content: inherit;
+        }
+
+        .team-card {
+            background: #fff;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            padding: 16px 14px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container header-inner">
+            <a href="#top" class="logo">
+                <img src="logo_transparent.png" alt="Logo der Praxis" />
+                <div class="logo-text">
+                    <strong>Physiotherapiepraxis</strong>
+                    <span>Bewegung. Gesundheit. Wohlbefinden.</span>
+                </div>
+            </a>
+
+            <nav>
+                <a href="#leistungen">Leistungen</a>
+                <a href="#ueber-uns">Über uns</a>
+                <a href="#infos">Infos</a>
+                <a href="#standort">Standort</a>
+                <a href="#kontakt">Kontakt</a>
+            </nav>
+        </div>
+    </header>
+
+    <main id="top">
+        <section id="logo" class="hero">
+            <div class="container hero-grid">
+                <div class="hero-content">
+                    <img class="hero-logo" src="logo_transparent.png" alt="Logo der Praxis" />
+                    <div class="hero-buttons">
+                        <a class="btn btn-primary" href="#kontakt">
+                            <span class="btn-icon" aria-hidden="true">&#128197;</span>
+                            <span class="btn-label-full">Termin anfragen</span>
+                            <span class="btn-label-short">Termin</span>
+                        </a>
+                        <a class="btn btn-secondary" href="#leistungen">
+                            <span class="btn-icon" aria-hidden="true">&#8594;</span>
+                            <span class="btn-label-full">Leistungen ansehen</span>
+                            <span class="btn-label-short">Leistungen</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="leistungen">
+            <div class="container">
+                <div class="section-head">
+                    <h2>Unsere Leistungen</h2>
+                    <p>
+                        Hier können eure einzelnen Behandlungsbereiche in derselben ruhigen,
+                        freundlichen Gestaltung dargestellt werden.
+                    </p>
+                </div>
+
+                <div class="services-grid">
+                    <article class="service-card">
+                        <div class="service-icon">
+                            <img src="engi_icon_krankengymnastik.png" alt="Krankengymnastik Icon" />
+                        </div>
+                        <h3>Krankengymnastik</h3>
+                        <p>Gezielte Übungen zur Verbesserung von Beweglichkeit, Kraft und Koordination.</p>
+                    </article>
+
+                    <article class="service-card">
+                        <div class="service-icon">
+                            <img src="engi_icon_manuelle_therapie.png" alt="Manuelle Therapie Icon" />
+                        </div>
+                        <h3>Manuelle Therapie</h3>
+                        <p>Sanfte Techniken zur Behandlung von Funktionsstörungen des Bewegungsapparates.</p>
+                    </article>
+
+                    <article class="service-card">
+                        <div class="service-icon">
+                            <img src="engi_icon_lymphdrainage.png" alt="Lymphdrainage Icon" />
+                        </div>
+                        <h3>Lymphdrainage</h3>
+                        <p>Unterstützung bei Schwellungen und zur Anregung des Lymphsystems.</p>
+                    </article>
+
+                    <article class="service-card">
+                        <div class="service-icon">
+                            <img src="engi_icon_hausbesuche.png" alt="Massage Icon" />
+                        </div>
+                        <h3>Massage</h3>
+                        <p>Lockerung verspannter Muskulatur und Förderung des allgemeinen Wohlbefindens.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="ueber-uns" class="about">
+            <div class="container about-grid">
+                <div class="about-images">
+                    <img src="natti.png" alt="Teammitglied 1" />
+                    <img src="matti.png" alt="Teammitglied 2" />
+                </div>
+
+                <div class="about-text-card">
+                    <h2>Über uns</h2>
+                    <p>
+                        Unsere Praxis bietet ein breites Spektrum physiotherapeutischer Behandlungen
+                        mit einem klaren Schwerpunkt im Bereich Pädiatrie. Wir betreuen Säuglinge,
+                        Kinder und Jugendliche mit Entwicklungsverzögerungen, orthopädischen
+                        Auffälligkeiten sowie neurologischen Erkrankungen und schaffen so die
+                        Grundlage für bestmögliche motorische Entwicklung und Teilhabe.
+                    </p>
+
+                    <p>
+                        Darüber hinaus behandeln wir Erwachsene mit orthopädischen, chirurgischen
+                        und neurologischen Fragestellungen. Dazu gehören die Rehabilitation nach
+                        Operationen oder Verletzungen, die Therapie bei chronischen Beschwerden
+                        sowie die Begleitung von Menschen mit Erkrankungen des Nervensystems.
+                    </p>
+
+                    <p>
+                        Wir arbeiten nach modernen physiotherapeutischen Konzepten, legen Wert auf
+                        fachliche Qualität und sehen die enge Zusammenarbeit mit Angehörigen,
+                        Ärztinnen und Ärzten sowie weiteren Therapeuten als zentralen Bestandteil
+                        einer erfolgreichen Behandlung.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section id="team">
+            <div class="container">
+                <div class="section-head">
+                    <h2>Unser Team</h2>
+                </div>
+
+                <div id="teams" class="info-grid">
+                    <div>
+                        <img src="susi.png" alt="Teammitglied 1" class="rund" />
+                        <h2>Susana Hein</h2>
+                        <h3>Physiotherapeutin</h3>
+                    </div>
+
+                    <div>
+                        <img src="natti.png" alt="Teammitglied 1" class="rund" />
+                        <h2>Rebecca Krüger</h2>
+                        <h3>Physiotherapeutin</h3>
+                    </div>
+
+                    <div>
+                        <img src="natti.png" alt="Teammitglied 1" class="rund" />
+                        <h2>Magdalena Schröder</h2>
+                        <h3>Physiotherapeutin</h3>
+                    </div>
+
+                    <div>
+                        <img src="natti.png" alt="Teammitglied 1" class="rund" />
+                        <h2>SNysret Rexhepi</h2>
+                        <h3>Physiotherapeut</h3>
+                    </div>
+
+                    <div>
+                        <img src="juli.png" alt="Teammitglied 1" class="rund" />
+                        <h2>Julia Bart</h2>
+                        <h3>PRezeptionskraft</h3>
+                    </div>
+
+                    <div>
+                        <img src="natti.png" alt="Teammitglied 1" class="rund" />
+                        <h2>Verena Karg</h2>
+                        <h3>Reinigungskraft</h3>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section id="infos" style="background: #FBF6F0">
+            <div class="container">
+                <div class="section-head">
+                    <h2>Wichtige Informationen</h2>
+                    <p>
+                        Hier kannst du die zusätzlichen Unterpunkte unterbringen, damit die Seite trotz
+                        Onepager-Struktur vollständig wirkt.
+                    </p>
+                </div>
+
+                <div class="info-grid">
+                    <article class="info-card">
+                        <h3>Behandlungsablauf</h3>
+                        <ul>
+                            <li>Erstgespräch und Befundaufnahme</li>
+                            <li>Individuelle Therapieplanung</li>
+                            <li>Begleitende Übungen für zuhause</li>
+                        </ul>
+                    </article>
+
+                    <article class="info-card">
+                        <h3>Was Sie mitbringen sollten</h3>
+                        <ul>
+                            <li>Rezept oder Verordnung</li>
+                            <li>Bequeme Kleidung</li>
+                            <li>Vorbefunde, falls vorhanden</li>
+                        </ul>
+                    </article>
+
+                    <article class="info-card">
+                        <h3>Für Sie da</h3>
+                        <ul>
+                            <li>Persönliche Betreuung</li>
+                            <li>Freundliche Praxisatmosphäre</li>
+                            <li>Moderne Behandlungskonzepte</li>
+                        </ul>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="standort" class="location-section">
+            <div class="container">
+                <div class="section-head">
+                    <h2>Standort</h2>
+                    <p>Hier finden Sie unsere Praxis in der Lindenstra&szlig;e 18 in 93426 Roding.</p>
+                </div>
+
+                <div class="location-box">
+                    <div class="location-copy">
+                        <h3>So finden Sie uns</h3>
+                        <p><strong>Engl Physiotherapie</strong></p>
+                        <p>Lindenstra&szlig;e 18<br />93426 Roding</p>
+                        <p>Die Karte zeigt Ihnen den genauen Standort der Praxis. Per Klick auf den Button k&ouml;nnen Sie die Route direkt in Google Maps &ouml;ffnen.</p>
+                        <a class="btn btn-primary" href="https://www.google.com/maps/search/?api=1&query=Lindenstra%C3%9Fe+18%2C+93426+Roding" target="_blank" rel="noopener noreferrer">Route in Google Maps</a>
+                    </div>
+
+                    <div class="map-embed">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1335142.9144680004!2d10.079709056249996!3d49.18726!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x479ffd46845b93e3%3A0xec7e22934eb783b2!2sPhysiotherapie%20Engl!5e0!3m2!1sde!2sde!4v1719313470409!5m2!1sde!2sde"
+                            allowfullscreen=""
+                            loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade"
+                            title="Google Maps Karte der Praxis Engl Physiotherapie">
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="kontakt" >
+            <div class="container">
+                <div class="section-head">
+                    <h2>Kontakt</h2>
+                    <p>So finden Sie uns und erreichen uns für Terminvereinbarungen.</p>
+                </div>
+
+                <div class="contact-box">
+                    <div class="contact-details">
+                        <h3>Praxisdaten</h3>
+                        <p><strong>Engl Physiotherapie</strong></p>
+                        <p>Lindenstra&szlig;e 18<br />93426 Roding</p>
+                        <p>Telefon: 09461 6198355</p>
+                        <p>Fax: 09461 / 61 98 356</p>
+                    </div>
+
+                    <div class="contact-times">
+                        <h3>Öffnungszeiten</h3>
+                        <p>Montag bis Freitag</p>
+                        <p>Termine nach Vereinbarung</p>
+                        <p>
+                            F&uuml;r Terminabsprachen erreichen Sie uns telefonisch.
+                            <br />
+                            Hausbesuche k&ouml;nnen bei Bedarf individuell vereinbart werden.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            &copy; 2026 Engl Physiotherapie &middot; Impressum &middot; Datenschutz
+        </div>
+    </footer>
+
+</body>
+</html>

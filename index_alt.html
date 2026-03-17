@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EnGi Physiotherapie</title>
+  <style>
+    :root{
+      --bg:#FAF6EE;
+      --bg-soft:#F5EFE2;
+      --card:#FFFFFFCC;
+      --text:#4C5552;
+      --muted:#66706D;
+      --line:#E5DDD0;
+      --accent:#33C7DF;
+      --sage:#6A716F;
+      --contact:#EFE7D9;
+      --pink:#F472B6;
+      --yellow:#FDE047;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family: Arial, Helvetica, sans-serif;
+      color:var(--text);
+      background:var(--bg);
+      line-height:1.6;
+    }
+    a{text-decoration:none;color:inherit}
+    .container{max-width:1180px;margin:0 auto;padding:0 24px}
+    .header{
+      position:sticky;top:0;z-index:50;
+      backdrop-filter: blur(10px);
+      background:rgba(250,246,238,.95);
+      border-bottom:1px solid var(--line);
+    }
+    .header-inner{
+      display:flex;align-items:center;justify-content:space-between;
+      gap:24px;padding:16px 0;
+    }
+    .brand{display:flex;align-items:center;gap:16px}
+    .logo-box{
+      width:64px;height:64px;border-radius:18px;background:#fff;
+      border:1px solid #e7dfd3;display:flex;align-items:center;justify-content:center;
+      box-shadow:0 2px 10px rgba(0,0,0,.04);
+      color:var(--accent);font-size:28px;font-weight:300;
+    }
+    .brand-copy .engi{
+      color:var(--accent);font-size:24px;font-weight:300;letter-spacing:.35em;
+    }
+    .brand-copy .sub{
+      color:var(--sage);font-size:11px;text-transform:uppercase;letter-spacing:.28em;
+      margin-top:2px;
+    }
+    nav{display:flex;gap:24px;align-items:center;flex-wrap:wrap}
+    nav a{font-size:14px;color:var(--text)}
+    nav a:hover{color:var(--accent)}
+    .btn-outline{
+      border:1px solid var(--accent);color:#1a9eb5;padding:10px 16px;border-radius:999px;
+      background:#fff;
+    }
+    .hero{
+      position:relative;overflow:hidden;
+      background:
+        radial-gradient(circle at top left, rgba(51,199,223,.12), transparent 28%),
+        radial-gradient(circle at bottom right, rgba(148,163,184,.10), transparent 24%);
+    }
+    .hero-grid{
+      display:grid;grid-template-columns:1.05fr .95fr;gap:40px;
+      padding:72px 0 84px;
+    }
+    .eyebrow{
+      color:var(--accent);font-size:13px;text-transform:uppercase;letter-spacing:.32em;margin-bottom:18px;
+    }
+    h1{
+      margin:0;
+      font-size:56px;line-height:1.08;font-weight:300;color:#43504c;
+      max-width:760px;
+    }
+    .hero p{
+      max-width:620px;color:var(--muted);font-size:19px;margin:24px 0 0;
+    }
+    .actions{display:flex;gap:16px;flex-wrap:wrap;margin-top:32px}
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;
+      padding:14px 24px;border-radius:999px;font-size:14px;font-weight:600;
+      transition:.2s ease;
+    }
+    .btn-primary{
+      background:var(--accent);color:#fff;box-shadow:0 10px 25px rgba(51,199,223,.22);
+    }
+    .btn-primary:hover{transform:translateY(-1px)}
+    .btn-secondary{
+      border:1px solid #d9d0c3;background:#fff;color:var(--text);
+    }
+    .hero-card{
+      background:rgba(255,255,255,.7);border:1px solid #e1d9cc;border-radius:32px;
+      padding:24px;box-shadow:0 20px 60px rgba(0,0,0,.06);
+    }
+    .hero-logo{
+      min-height:380px;background:var(--bg-soft);border-radius:26px;
+      display:flex;align-items:center;justify-content:center;flex-direction:column;text-align:center;padding:32px;
+    }
+    .hero-logo .mark{
+      width:140px;height:140px;border-radius:30px;background:#fff;border:1px solid #e7dfd3;
+      display:flex;align-items:center;justify-content:center;
+      color:var(--accent);font-size:56px;font-weight:300;box-shadow:0 12px 30px rgba(0,0,0,.05);
+    }
+    .hero-logo .word{margin-top:20px;font-size:44px;color:var(--accent);font-weight:300;letter-spacing:.2em}
+    .hero-logo .small{font-size:13px;text-transform:uppercase;letter-spacing:.28em;color:var(--sage);margin-top:6px}
+    .section{padding:72px 0}
+    .section-tight{padding:24px 0 36px}
+    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .value-card,.detail-card,.info-card,.faq-item{
+      background:rgba(255,255,255,.82);border:1px solid #e4dbcf;border-radius:28px;
+      padding:24px;box-shadow:0 8px 24px rgba(0,0,0,.03);
+    }
+    .center{text-align:center}
+    h2{
+      font-size:42px;line-height:1.15;font-weight:300;margin:0;color:#43504c;
+    }
+    .subtext{margin-top:12px;color:#6d7673}
+    .team-grid,.praxis-grid,.service-cards,.detail-grid,.info-grid{display:grid;gap:32px}
+    .team-grid,.praxis-grid{grid-template-columns:repeat(4,1fr)}
+    .service-cards,.detail-grid,.info-grid{grid-template-columns:repeat(3,1fr)}
+    .circle-photo{
+      width:208px;height:208px;margin:0 auto 18px;border-radius:50%;
+      background:#e8dfd2;border:4px solid #fff;box-shadow:0 12px 28px rgba(0,0,0,.08);
+    }
+    .praxis-bg{background:rgba(255,255,255,.45)}
+    .about-box{
+      background:var(--sage);color:#fff;border-radius:40px;padding:44px 56px;
+      box-shadow:0 20px 50px rgba(0,0,0,.08);
+    }
+    .about-box p, .about-box .eyebrow-lite{color:#edf1ef}
+    .eyebrow-lite{
+      font-size:13px;text-transform:uppercase;letter-spacing:.28em;margin-bottom:12px;
+    }
+    .circle-wrap{display:flex;justify-content:center}
+    .service-circle{
+      width:288px;height:288px;border-radius:50%;background:rgba(255,255,255,.82);
+      display:flex;align-items:center;justify-content:center;text-align:center;padding:32px;
+      border:2px solid #ddd;
+    }
+    .cyan{border-color:var(--accent);box-shadow:0 18px 45px rgba(34,211,238,.10)}
+    .pink{border-color:var(--pink);box-shadow:0 18px 45px rgba(244,114,182,.10)}
+    .yellow{border-color:var(--yellow);box-shadow:0 18px 45px rgba(253,224,71,.12)}
+    .service-circle h3,.detail-card h3,.info-card h3,.faq-item h3{margin:0;color:#46534f;font-size:24px}
+    .service-circle p,.detail-card p,.info-card p,.faq-item p{margin-top:14px;color:var(--muted);font-size:15px;line-height:1.8}
+    .soft-bg{background:#F3ECE1}
+    .contact-bg{background:var(--contact)}
+    .contact-grid{
+      display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;
+    }
+    .contact-card{
+      background:rgba(255,255,255,.7);border:1px solid #d7cfc3;border-radius:32px;
+      padding:16px;box-shadow:0 12px 30px rgba(0,0,0,.05);
+    }
+    .map-placeholder{
+      min-height:320px;border-radius:24px;border:1px dashed #d6ccbf;background:var(--bg);
+      display:flex;align-items:center;justify-content:center;color:#7a817f;font-size:14px;text-align:center;padding:20px;
+    }
+    .contact-list p{margin:4px 0;color:#5f6966}
+    .footer{
+      padding:28px 0 40px;color:#7a817f;font-size:13px;text-align:center;
+    }
+    @media (max-width: 1050px){
+      .hero-grid,.contact-grid,.grid-3,.team-grid,.praxis-grid,.service-cards,.detail-grid,.info-grid{
+        grid-template-columns:1fr 1fr;
+      }
+      .service-circle{width:100%;max-width:320px;height:320px}
+      h1{font-size:46px}
+      h2{font-size:36px}
+    }
+    @media (max-width: 760px){
+      nav{display:none}
+      .hero-grid,.contact-grid,.grid-3,.team-grid,.praxis-grid,.service-cards,.detail-grid,.info-grid{
+        grid-template-columns:1fr;
+      }
+      .hero-grid{padding:48px 0 56px}
+      h1{font-size:38px}
+      h2{font-size:31px}
+      .hero p{font-size:17px}
+      .about-box{padding:32px 24px;border-radius:28px}
+      .service-circle{width:288px;height:288px;max-width:none}
+      .container{padding:0 18px}
+      .circle-photo{width:190px;height:190px}
+      .brand-copy .engi{font-size:21px}
+    }
+      .rund {
+          border-radius: 200px;
+          -moz-border-radius: 200px;
+          -webkit-border-radius: 200px;
+          width: 200px;
+          height: 200px;
+          border: 3px solid white;
+      }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container header-inner">
+      <div class="brand">
+          <div>
+              <img src="engl.png" style="height:100px; width:200px"/>
+          </div>
+      </div>
+      <nav>
+        <a href="#team">Team</a>
+        <a href="#praxis">Praxis</a>
+        <a href="#about">Über uns</a>
+        <a href="#leistungen">Leistungen</a>
+        <a href="#termin">Erster Termin</a>
+        <a href="#faq">FAQ</a>
+        <a class="btn-outline" href="#kontakt">Kontakt</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow">Willkommen</div>
+          <h1>Ihre Praxis für Physiotherapie mit persönlicher Begleitung und ruhiger Atmosphäre.</h1>
+          <p>Fachlich fundiert, menschlich zugewandt und so gestaltet, dass sich Patientinnen und Patienten direkt gut aufgehoben fühlen.</p>
+          <div class="actions">
+            <a class="btn btn-primary" href="#kontakt">Termin anfragen</a>
+            <a class="btn btn-secondary" href="#leistungen">Leistungen ansehen</a>
+          </div>
+        </div>
+        <div class="hero-card">
+          <div class="hero-logo">
+            <div class="mark">E</div>
+            <div class="word">EnGi</div>
+            <div class="small">Physiotherapie</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-tight">
+      <div class="container grid-3">
+        <div class="value-card">Persönliche Betreuung statt Fließbandgefühl</div>
+        <div class="value-card">Moderne Therapie in ruhiger Atmosphäre</div>
+        <div class="value-card">Zeit, Aufmerksamkeit und individuelle Begleitung</div>
+      </div>
+    </section>
+
+    <section id="team" class="section">
+      <div class="container">
+        <div class="center">
+          <h2>Das Team</h2>
+          <div class="subtext">Freundlich, kompetent und mit echter Freude an der Arbeit mit Menschen.</div>
+        </div>
+        <div class="team-grid" style="margin-top:40px">
+          <div class="center">
+              <div class="circle-photo">
+                  <img src="praxis.jpg" class="rund" />
+              </div>
+            <div><strong>Name 1</strong></div>
+            <div class="subtext" style="margin-top:4px">Inhaberin / Therapeutin</div>
+          </div>
+          <div class="center">
+            <div class="circle-photo"></div>
+            <div><strong>Name 2</strong></div>
+            <div class="subtext" style="margin-top:4px">Therapeutin</div>
+          </div>
+          <div class="center">
+            <div class="circle-photo"></div>
+            <div><strong>Name 3</strong></div>
+            <div class="subtext" style="margin-top:4px">Praxisassistenz</div>
+          </div>
+          <div class="center">
+            <div class="circle-photo"></div>
+            <div><strong>Name 4</strong></div>
+            <div class="subtext" style="margin-top:4px">Empfang & Organisation</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="praxis" class="section praxis-bg">
+      <div class="container">
+        <div class="center">
+          <h2>Unsere Praxis</h2>
+          <div class="subtext">Helle Räume, ruhige Atmosphäre und ein Umfeld zum Ankommen.</div>
+        </div>
+        <div class="praxis-grid" style="margin-top:40px">
+          <div class="center"><div class="circle-photo" style="background:#e7dece"></div><div class="subtext">Außenansicht</div></div>
+          <div class="center"><div class="circle-photo" style="background:#e7dece"></div><div class="subtext">Behandlungsraum</div></div>
+          <div class="center"><div class="circle-photo" style="background:#e7dece"></div><div class="subtext">Wartebereich</div></div>
+          <div class="center"><div class="circle-photo" style="background:#e7dece"></div><div class="subtext">Therapieraum</div></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="section">
+      <div class="container" style="max-width:980px">
+        <div class="about-box center">
+          <div class="eyebrow-lite">Über uns</div>
+          <h2 style="color:#fff">Persönlich. Zugewandt. Mit Blick auf den ganzen Menschen.</h2>
+          <p style="max-width:760px;margin:24px auto 0">
+            Wir begleiten Menschen individuell auf ihrem Weg zu mehr Beweglichkeit, weniger Schmerzen und einem besseren Körpergefühl. Dabei verbinden wir fachliche Kompetenz mit einer warmen, vertrauensvollen Atmosphäre, in der Therapie nicht kühl wirkt, sondern menschlich, klar und gut verständlich.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="leistungen" class="section">
+      <div class="container">
+        <div class="center">
+          <h2>Unsere Leistungen</h2>
+          <div class="subtext">Die wichtigsten Angebote auf einen Blick – mit Raum für genauere Informationen darunter.</div>
+        </div>
+
+        <div class="service-cards" style="margin-top:44px">
+          <div class="circle-wrap">
+            <div class="service-circle cyan">
+              <div>
+                <h3>Physiotherapie</h3>
+                <p>Individuelle Behandlung für mehr Beweglichkeit, weniger Schmerzen und einen Alltag mit mehr Leichtigkeit.</p>
+              </div>
+            </div>
+          </div>
+          <div class="circle-wrap">
+            <div class="service-circle pink">
+              <div>
+                <h3>Medical Taping</h3>
+                <p>Unterstützende Tape-Anlagen zur Stabilisierung, Entlastung und Förderung natürlicher Bewegungsabläufe.</p>
+              </div>
+            </div>
+          </div>
+          <div class="circle-wrap">
+            <div class="service-circle yellow">
+              <div>
+                <h3>Lymphdrainage</h3>
+                <p>Sanfte Behandlung zur Unterstützung des Lymphflusses und zur Reduktion von Schwellungen.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="detail-grid" style="margin-top:48px">
+          <div class="detail-card">
+            <h3>Physiotherapie</h3>
+            <p>Wir erstellen einen auf Sie abgestimmten Behandlungsplan und begleiten Sie Schritt für Schritt auf dem Weg zu mehr Stabilität, Beweglichkeit und Sicherheit im Alltag.</p>
+          </div>
+          <div class="detail-card">
+            <h3>Medical Taping</h3>
+            <p>Tapes können Muskeln und Gelenke entlasten, Bewegungen unterstützen und das Körpergefühl verbessern – ergänzend zu einer physiotherapeutischen Behandlung.</p>
+          </div>
+          <div class="detail-card">
+            <h3>Lymphdrainage</h3>
+            <p>Mit ruhigen, gezielten Griffen fördern wir den Lymphabfluss und unterstützen den Körper dabei, Schwellungen zu reduzieren und Spannungsgefühle zu lindern.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="termin" class="section soft-bg">
+      <div class="container">
+        <div class="center" style="max-width:840px;margin:0 auto">
+          <div class="eyebrow">Gut vorbereitet</div>
+          <h2>Informationen zum ersten Termin</h2>
+          <div class="subtext" style="line-height:1.8">
+            Damit Ihr erster Besuch bei uns möglichst angenehm und unkompliziert verläuft, finden Sie hier die wichtigsten Hinweise vorab.
+          </div>
+        </div>
+
+        <div class="info-grid" style="margin-top:40px">
+          <div class="info-card">
+            <h3>Bitte mitbringen</h3>
+            <p>Rezept, relevante Befunde, bequeme Kleidung und – falls vorhanden – Hilfsmittel oder bereits genutzte Unterlagen.</p>
+          </div>
+          <div class="info-card">
+            <h3>So läuft es ab</h3>
+            <p>Zuerst nehmen wir uns Zeit für ein kurzes Gespräch, betrachten Ihre Beschwerden und legen gemeinsam den sinnvollen nächsten Schritt fest.</p>
+          </div>
+          <div class="info-card">
+            <h3>Noch Fragen?</h3>
+            <p>Wenn Sie vorab etwas klären möchten, können Sie uns gern telefonisch oder per E-Mail kontaktieren.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq" class="section">
+      <div class="container" style="max-width:980px">
+        <div class="center">
+          <h2>Häufige Fragen</h2>
+          <div class="subtext">Kurze Antworten auf typische Fragen rund um Behandlung, Termin und Ablauf.</div>
+        </div>
+        <div style="margin-top:36px;display:grid;gap:16px">
+          <div class="faq-item">
+            <h3>Brauche ich für die Behandlung ein Rezept?</h3>
+            <p>Das hängt von der gewünschten Leistung ab. Klassische physiotherapeutische Behandlungen finden oft auf ärztliche Verordnung statt. Selbstzahlerleistungen sind je nach Angebot ebenfalls möglich.</p>
+          </div>
+          <div class="faq-item">
+            <h3>Was soll ich zum ersten Termin mitbringen?</h3>
+            <p>Bitte bringen Sie – falls vorhanden – Ihr Rezept, relevante Befunde, bequeme Kleidung und eventuell bereits vorhandene Hilfsmittel mit.</p>
+          </div>
+          <div class="faq-item">
+            <h3>Wie läuft der erste Termin ab?</h3>
+            <p>Zu Beginn nehmen wir uns Zeit für ein kurzes Gespräch, schauen auf Ihre Beschwerden, Ihre Ziele und Ihren Alltag und stimmen danach die Behandlung individuell darauf ab.</p>
+          </div>
+          <div class="faq-item">
+            <h3>Sind Hausbesuche möglich?</h3>
+            <p>Falls Hausbesuche angeboten werden, kann dieser Punkt hier klar beschrieben werden – inklusive Voraussetzungen und Einzugsgebiet.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="kontakt" class="section contact-bg">
+      <div class="container contact-grid">
+        <div>
+          <div class="eyebrow">Kontakt</div>
+          <h2>Wo Sie uns finden</h2>
+          <p style="max-width:520px;color:#5f6966;margin-top:16px">
+            Adresse, Telefonnummer, E-Mail und Öffnungszeiten können hier klar und gut sichtbar platziert werden. So finden Patientinnen und Patienten schnell alle wichtigen Informationen.
+          </p>
+          <div class="contact-list" style="margin-top:28px">
+            <p>Musterstraße 12</p>
+            <p>12345 Musterstadt</p>
+            <p>Telefon: 01234 567890</p>
+            <p>E-Mail: info@engi-physio.de</p>
+            <p>Mo–Fr: 08:00–18:00 Uhr</p>
+          </div>
+          <div class="actions" style="margin-top:28px">
+            <a class="btn btn-primary" href="tel:01234567890">Jetzt anrufen</a>
+            <a class="btn btn-secondary" href="mailto:info@engi-physio.de">E-Mail schreiben</a>
+          </div>
+        </div>
+        <div class="contact-card">
+          <div class="map-placeholder">Platz für Karte / Google Maps</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="footer">
+    Beispiel-Datei zur Ansicht – Inhalte, Fotos, Kontaktdaten und das finale Logo können direkt ersetzt werden.
+  </div>
+</body>
+</html>
